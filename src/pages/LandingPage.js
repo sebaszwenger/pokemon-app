@@ -20,11 +20,7 @@ const LandingPage = ({ isLogged, setIsLogged }) => {
             onClick={logOut}
             className="bg-teal-600 py-1 px-2 rounded-md shadow-md shadow-teal-900 font-bold text-lg"
           >
-            {isLogged ? (
-              <NavLink to="/login">LogOut</NavLink>
-            ) : (
-              <NavLink to="/login">Login</NavLink>
-            )}
+            <NavLink to="/login">LogOut</NavLink>
           </button>
         </div>
       </div>
