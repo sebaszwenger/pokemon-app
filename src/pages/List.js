@@ -1,28 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PokemonCard from "../components/PokemonCard";
 import useFetch from "../hooks/useFetch.js";
 
 const List = () => {
-  const [page, setPage] = useState(0);
-  const { data, loading, error, changePage } = useFetch();
-
-  useEffect(() => {
-    const url = `https://pokeapi.co/api/v2/ability/?limit=20}&offset=${
-      20 * page
-    }`;
-    changePage(url);
-  }, [page]);
+  const [page, setPage] = useState(1);
+  const { data, loading } = useFetch(
+    `https://pokeapi.co/api/v2/ability/?limit=20}&offset=${20 * page}`
+  );
 
   function nextPage() {
-    setPage(page + 1);
+    setPage((prevValue) => prevValue + 1);
   }
   function prevPage() {
-    setPage(page - 1);
+    setPage((prevValue) => prevValue - 1);
   }
 
   if (loading) return <h1>LOADING...</h1>;
 
-  if (error) console.log(error);
   return (
     <>
       <ul className="flex flex-wrap flex-1 gap-x-5 gap-y-9 mt-10 justify-center">
