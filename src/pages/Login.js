@@ -12,15 +12,6 @@ const Login = ({ setIsLogged }) => {
   const inputEmailRef = useRef("");
   const inputPassRef = useRef("");
 
-  //state that stores the fields of the form
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-
-  //extract values ​​from user state
-  const { email, password } = user;
-
   //state that checks if there is an error in the form data
   const [error, setError] = useState(false);
 
@@ -28,32 +19,24 @@ const Login = ({ setIsLogged }) => {
   const [message, setMessage] = useState("");
 
   //FUNCTIONS --------------------------------------------
-  //handle the fields of the form with user state
-  const handleChangeInput = (e) => {
-    setUser({
-      ...user,
-      [e.target.id]: e.target.value,
-    });
-  };
-  const inputEmail = inputEmailRef.current.value;
-  const inputPass = inputPassRef.current.value;
-  // setUser({ email: inputEmail, password: inputPass });
 
   //Handle the submit form
   function handleSubmit(e) {
     e.preventDefault();
+    // }
+    const inputEmail = inputEmailRef.current.value;
+    const inputPass = inputPassRef.current.value;
 
     //validate the form data
-    if ([email, password].includes("")) {
+    if ([inputEmail, inputPass].includes("")) {
       setMessage("All fields are required");
       setError(true);
       return;
     }
 
     //Validate username and password
-    if (email === "seba@test.com" && password === "seba") {
+    if (inputEmail === "seba@test.com" && inputPass === "seba") {
       setIsLogged("true");
-      // setUser({ email: inputEmail, password: inputPass });
       window.localStorage.setItem("pokeIsLogged", "true");
 
       //Clear the previous error message
@@ -88,8 +71,6 @@ const Login = ({ setIsLogged }) => {
                     id="email"
                     type="email"
                     className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-blue-400 fucus:ring-blue-400"
-                    value={inputEmail}
-                    onChange={handleChangeInput}
                   />
                 </div>
               </label>
@@ -107,9 +88,7 @@ const Login = ({ setIsLogged }) => {
                     name="password"
                     id="password"
                     className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-blue-400 fucus:ring-blue-400"
-                    value={inputPass}
                     type="password"
-                    onChange={handleChangeInput}
                   />
                 </div>
               </label>
