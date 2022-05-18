@@ -19,22 +19,7 @@ function useFetch(url) {
       .finally(() => setLoading(false));
   }, [url]);
 
-  function changePage(url) {
-    setLoading(true);
-    axios
-      .get(url)
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        setError(error);
-      })
-      .finally(() => setLoading(false));
-
-    return data;
-  }
-
-  return { data, loading, error, changePage };
+  return { data, loading, error };
 }
 
 export default useFetch;
