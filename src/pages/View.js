@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch.js";
 
 const View = () => {
@@ -7,7 +7,7 @@ const View = () => {
 
   const { data } = useFetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
-  const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+  const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
   return (
     <>
@@ -16,11 +16,11 @@ const View = () => {
           type="text"
           className="font-bold text-xl mb-10 bg-teal-600 py-1 px-2 rounded-md shadow-md shadow-teal-900"
         >
-          <NavLink to="/">Back</NavLink>
+          <Link to="/">Back</Link>
         </button>
         <div className="w-96 border-8 border-gray-700 rounded-xl shadow-gray-700 shadow-lg">
           <div className="bg-zinc-300 rounded-t-lg">
-            <img className="" src={url} alt={data?.name} />
+            <img className="" src={imageUrl} alt={data?.name} />
           </div>
           <div className="bg-zinc-300 flex flex-col justify-center items-center">
             <p className="pb-1">

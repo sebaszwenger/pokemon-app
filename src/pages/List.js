@@ -3,7 +3,7 @@ import PokemonCard from "../components/PokemonCard";
 import useFetch from "../hooks/useFetch.js";
 
 const List = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const { data, loading } = useFetch(
     `https://pokeapi.co/api/v2/ability/?limit=20}&offset=${20 * page}`
   );
